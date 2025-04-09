@@ -1,0 +1,31 @@
+<html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>PokemonAPI</title>
+     <link rel="stylesheet" href="Style.css">
+ </head>
+ <body>
+     <main id="app">
+         <!--Contenido dinamico -->
+     </main>
+     <aside class="c-nav">
+         <button class="c-nav-item" onclick="mostrarHome()" >Home</button>
+         <button class="c-nav-item" onclick="mostrarUsuario()" >Usuario</button>
+         <button class="c-nav-item" onclick="mostrarAleatorio()">Aleatorios</button>
+         <button class="c-nav-item" onclick="mostrarOriginal()">Original</button>
+         <button class="c-nav-item" onclick="mostarDetalles()">Detalles</button>
+     </aside>
+     <!-- Primero vamos a llamar el Api, porque el java lee los Script desde arriba hacia abajo -->
+ </body>
+ <script src="/js/api.js"></script>
+ <script src="/js/aleatorio.js"></script>
+ <script src="/js/detalles.js"></script>
+ <script src="/js/favorito.js"></script>
+ <script src="/js/lista.js"></script>
+ <script src="/js/original.js"></script>
+ <script src="/js/usuario.js"></script>
+ <script>
+     document.addEventListener("DOMContentLoaded", General)
+ </script>
+ </html>
