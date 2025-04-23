@@ -6,55 +6,53 @@
   }
   
   html, body {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f6f9;
-    color: #222;
+    color: #333;
     height: 100%;
     width: 100%;
-    overflow-x: hidden;
   }
   
-  /* Contenedor principal */
   main#app {
     padding: 1rem;
-    padding-bottom: 4rem; /* espacio para nav */
+    margin-left: 80px;
   }
   
-  /* Botón de instalar PWA */
+  /* Botón de instalación */
   #btn-instalar {
     position: fixed;
-    bottom: 80px;
+    bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
-    padding: 0.9rem 1.7rem;
-    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
     background-color: #ffcb05;
     color: #2a75bb;
     border: none;
-    border-radius: 30px;
+    border-radius: 1.5rem;
     font-weight: bold;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     cursor: pointer;
-    z-index: 1000;
     transition: background-color 0.3s ease;
+    z-index: 1000;
   }
   
   #btn-instalar:hover {
     background-color: #ffe066;
   }
   
-  /* Navegación fija inferior */
+  /* Barra lateral de navegación */
   .c-nav {
     position: fixed;
-    bottom: 0;
+    top: 0;
     left: 0;
-    width: 100%;
+    width: 80px;
+    height: 100%;
     background-color: #2a75bb;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
-    padding: 0.5rem 0;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    padding-top: 1rem;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
     z-index: 999;
   }
   
@@ -62,36 +60,43 @@
     background: none;
     border: none;
     color: #fff;
+    padding: 1rem 0.5rem;
     font-size: 0.9rem;
-    font-weight: 500;
-    padding: 0.7rem;
-    flex: 1;
+    cursor: pointer;
+    width: 100%;
     text-align: center;
     transition: background-color 0.2s ease;
-    cursor: pointer;
   }
   
   .c-nav-item:hover {
-    background-color: #1e5fa4;
+    background-color: #1d4e89;
   }
   
-  /* Estilos para mensaje iOS */
-  #app > div p {
-    background-color: #fff3cd;
-    color: #856404;
-    padding: 0.7rem;
-    margin: 1rem;
-    border: 1px solid #ffeeba;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 0.9rem;
-  }
+  /* Responsive para móviles */
+  @media (max-width: 600px) {
+    .c-nav {
+      flex-direction: row;
+      width: 100%;
+      height: auto;
+      padding: 0;
+      bottom: 0;
+      top: auto;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    }
   
-  /* Compatibilidad con pantallas más grandes */
-  @media (min-width: 600px) {
     main#app {
-      max-width: 480px;
-      margin: 0 auto;
+      margin-left: 0;
+      margin-bottom: 60px;
+    }
+  
+    .c-nav-item {
+      flex: 1;
+      padding: 0.8rem 0;
+      font-size: 0.8rem;
+    }
+  
+    #btn-instalar {
+      bottom: 70px;
     }
   }
   
