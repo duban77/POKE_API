@@ -1,148 +1,125 @@
-/* Reset básico */
-* {
+/* styles.css */
+
+/* Variables de color y fuente */
+:root {
+    --primary-color: #ffcb05;
+    --secondary-color: #3b4cca;
+    --bg-color: #f8f8f8;
+    --text-color: #222;
+    --nav-bg: #fff;
+    --nav-border: #ddd;
+    --nav-active: var(--secondary-color);
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
   }
   
-  html, body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f6f9;
-    color: #333;
-    height: 100%;
-    width: 100%;
-  }
-  
-  main#app {
+  body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
     padding: 1rem;
-    margin-left: 80px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
   
   /* Botón de instalación */
   #btn-instalar {
-    position: fixed;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0.8rem 1.5rem;
-    background-color: #ffcb05;
-    color: #2a75bb;
+    background-color: var(--secondary-color);
+    color: #fff;
     border: none;
-    border-radius: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
     font-weight: bold;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     cursor: pointer;
+    margin: 1rem auto;
+    display: block;
     transition: background-color 0.3s ease;
-    z-index: 1000;
   }
   
   #btn-instalar:hover {
-    background-color: #ffe066;
+    background-color: #2a36a8;
   }
   
-  /* Barra lateral de navegación */
-  .c-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 80px;
-    height: 100%;
-    background-color: #2a75bb;
+  /* Contenido principal */
+  main#app {
+    flex-grow: 1;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    overflow-y: auto;
+  }
+  
+  /* Navegación lateral como barra de pestañas */
+  aside.c-nav {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 1rem;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-    z-index: 999;
+    justify-content: space-around;
+    background-color: var(--nav-bg);
+    border-top: 2px solid var(--nav-border);
+    padding: 0.5rem 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
   }
   
   .c-nav-item {
+    flex: 1;
     background: none;
     border: none;
-    color: #fff;
-    padding: 1rem 0.5rem;
-    font-size: 0.9rem;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--secondary-color);
     cursor: pointer;
-    width: 100%;
-    text-align: center;
-    transition: background-color 0.2s ease;
+    transition: color 0.3s ease;
   }
   
-  .c-nav-item:hover {
-    background-color: #1d4e89;
+  .c-nav-item:hover,
+  .c-nav-item:focus {
+    color: var(--primary-color);
+    outline: none;
   }
   
-  /* Responsive para móviles */
-  @media (max-width: 600px) {
-    .c-nav {
+  .c-nav-item.active {
+    color: var(--nav-active);
+  }
+  
+  /* Responsive design */
+  @media (min-width: 768px) {
+    body {
       flex-direction: row;
-      width: 100%;
-      height: auto;
-      padding: 0;
-      bottom: 0;
-      top: auto;
-      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
     }
   
     main#app {
-      margin-left: 0;
-      margin-bottom: 60px;
+      margin: 0 1rem 0 220px;
+      padding: 2rem;
+    }
+  
+    aside.c-nav {
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 200px;
+      border-top: none;
+      border-right: 2px solid var(--nav-border);
+      padding-top: 2rem;
     }
   
     .c-nav-item {
-      flex: 1;
-      padding: 0.8rem 0;
-      font-size: 0.8rem;
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--nav-border);
     }
-  
-    #btn-instalar {
-      bottom: 70px;
-    }
-  }
-  /* Contenedor de la lista de Pokémon */
-.pokemon-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  /* Tarjeta individual de Pokémon */
-  .pokemon-card {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    display: flex;
-    align-items: center;
-    padding: 0.8rem;
-    gap: 1rem;
-    transition: transform 0.2s ease;
-  }
-  
-  .pokemon-card:hover {
-    transform: scale(1.02);
-  }
-  
-  /* Imagen del Pokémon */
-  .pokemon-card img {
-    width: 60px;
-    height: 60px;
-  }
-  
-  /* Nombre y número */
-  .pokemon-info {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .pokemon-info h3 {
-    font-size: 1rem;
-    margin: 0;
-    color: #2a2a2a;
-    text-transform: capitalize;
-  }
-  
-  .pokemon-info span {
-    font-size: 0.85rem;
-    color: #888;
   }
   
