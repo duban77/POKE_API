@@ -99,4 +99,50 @@
       bottom: 70px;
     }
   }
+  /* Contenedor de la lista de Pokémon */
+.pokemon-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Tarjeta individual de Pokémon */
+  .pokemon-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    gap: 1rem;
+    transition: transform 0.2s ease;
+  }
+  
+  .pokemon-card:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Imagen del Pokémon */
+  .pokemon-card img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  /* Nombre y número */
+  .pokemon-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .pokemon-info h3 {
+    font-size: 1rem;
+    margin: 0;
+    color: #2a2a2a;
+    text-transform: capitalize;
+  }
+  
+  .pokemon-info span {
+    font-size: 0.85rem;
+    color: #888;
+  }
   
