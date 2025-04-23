@@ -1,31 +1,93 @@
-<html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>PokemonAPI</title>
-     <link rel="stylesheet" href="style.css">
- </head>
- <body>
-     <main id="app">
-         <!--Contenido dinamico -->
-     </main>
-     <aside class="c-nav">
-         <button class="c-nav-item" onclick="mostrarHome()" >Home</button>
-         <button class="c-nav-item" onclick="mostrarUsuario()" >Usuario</button>
-         <button class="c-nav-item" onclick="mostrarAleatorio()">Aleatorios</button>
-         <button class="c-nav-item" onclick="mostrarOriginal()">Original</button>
-         <button class="c-nav-item" onclick="mostarDetalles()">Detalles</button>
-     </aside>
-     <!-- Primero vamos a llamar el Api, porque el java lee los Script desde arriba hacia abajo -->
- </body>
- <script src="/js/api.js"></script>
- <script src="/js/aleatorio.js"></script>
- <script src="/js/detalles.js"></script>
- <script src="/js/favorito.js"></script>
- <script src="/js/lista.js"></script>
- <script src="/js/original.js"></script>
- <script src="/js/usuario.js"></script>
- <script>
-     document.addEventListener("DOMContentLoaded", General)
- </script>
- </html>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeApp</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="manifest.json">
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "42b0fd81-a018-4dcf-aeca-0c6486e82524",
+    });
+  });
+</script>
+</head>
+
+<body>
+    <button id="btn-instalar" style="display:none;">Instalar App</button>
+    <main id="app">
+        <!-- Contenido dinámico -->
+    </main>
+
+    <aside class="c-nav">
+        <button class="c-nav-item" onclick="mostrarDatos()">Usuario</button>
+        <button class="c-nav-item" onclick="mostrarMios()">Mios</button>
+        <button class="c-nav-item" onclick="mostrarAleatorio(pokemones)">Aleatorio</button>
+        <button class="c-nav-item" onclick="mostrarFavoritos()">Favoritos</button>
+        <button class="c-nav-item" onclick="mostrarLista(pokemones)">Lista</button>
+
+
+    </aside>
+
+    <script src="js/api.js"></script>
+    <script src="js/lista.js"></script>
+    <script src="js/aleatorio.js"></script>
+    <script src="js/mios.js"></script>
+    <script src="js/datos.js"></script>
+    <script src="js/favoritos.js"></script>
+    <script src="js/detalle.js"></script>
+    <script src="sw.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(() => console.log('Service Worker registrado ✅'))
+                .catch(error => console.log('Error al registrar SW:', error));
+        }
+
+        let deferredPrompt;
+
+        window.addEventListener("beforeinstallprompt", (e) => {
+            e.preventDefault(); // Evita que aparezca automáticamente
+            deferredPrompt = e;
+
+            // Mostrar el botón personalizado
+            const btn = document.getElementById("btn-instalar");
+            if (btn) btn.style.display = "block";
+        });
+
+        document.getElementById("btn-instalar").addEventListener("click", async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt(); // Muestra el diálogo
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log("Resultado de instalación:", outcome);
+
+                // Ya no se necesita el prompt
+                deferredPrompt = null;
+                document.getElementById("btn-instalar").style.display = "none";
+            }
+        });
+
+        function esIOS() {
+            return /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+        }
+
+        if (esIOS()) {
+            const mensaje = document.createElement("div");
+            mensaje.innerHTML = `
+    <p>En iOS, toca <span style="font-weight:bold;">Compartir</span> y luego "Agregar a pantalla de inicio" para instalar.</p>
+  `;
+            document.getElementById("btn-instalar").replaceWith(mensaje);
+        }
+
+
+    </script>
+
+</body>
+
+</html>
