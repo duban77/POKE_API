@@ -1,98 +1,92 @@
-/* css/styles.css */
-
-:root {
-    --color-primario: #ffcb05;
-    --color-secundario: #3b4cca;
-    --color-fondo: #f5f5f5;
-    --color-texto: #333;
-    --borde-radio: 10px;
-    --sombra: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  * {
-    box-sizing: border-box;
+/* Reiniciar márgenes y aplicar un box-sizing consistente */
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  body {
-    background-color: var(--color-fondo);
-    color: var(--color-texto);
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  main#app {
-    flex: 1;
-    padding: 1rem;
-    background: white;
-    border-radius: var(--borde-radio);
-    box-shadow: var(--sombra);
-    margin-bottom: 1rem;
-  }
-  
-  /* Botón de instalar */
-  #btn-instalar {
-    background-color: var(--color-secundario);
-    color: white;
+    box-sizing: border-box;
+}
+
+/* Estilo general para botones */
+button {
+    background-color: transparent;
     border: none;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    border-radius: var(--borde-radio);
     cursor: pointer;
-    margin-bottom: 1rem;
-    transition: background 0.3s ease;
-  }
-  
-  #btn-instalar:hover {
-    background-color: #2a3691;
-  }
-  
-  /* Navegación lateral */
-  aside.c-nav {
+    margin: 0;
+    transition: all 0.3s ease;
+}
+
+/* Lista de elementos (p. ej. lista de pokemones) */
+.c-lista {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background-color: var(--color-secundario);
-    border-radius: var(--borde-radio);
-    padding: 0.5rem;
-    box-shadow: var(--sombra);
-    position: sticky;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.c-lista-pokemon {
+    background-color: #f0f8ff; /* AliceBlue más suave */
+    width: calc(50% - 5px);
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la navegación fija en la parte inferior */
+.c-nav {
+    position: fixed;
     bottom: 0;
-    z-index: 100;
-  }
-  
-  .c-nav-item {
-    background: var(--color-primario);
-    border: none;
-    color: #000;
-    padding: 0.6rem 1rem;
-    font-weight: bold;
-    border-radius: var(--borde-radio);
-    cursor: pointer;
-    transition: transform 0.2s ease, background 0.3s ease;
-  }
-  
-  .c-nav-item:hover {
-    background-color: #ffe25a;
-    transform: scale(1.05);
-  }
-  
-  @media (min-width: 768px) {
-    aside.c-nav {
-      flex-direction: column;
-      position: fixed;
-      left: 1rem;
-      top: 1rem;
-      bottom: 1rem;
-      width: 180px;
-    }
-  
-    main#app {
-      margin-left: 200px;
-    }
-  }
-  
+    left: 0;
+    background: #c0c0c0; /* Silver más neutro */
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 15px 20px;
+    gap: 15px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.c-nav-item {
+    width: calc(20% - 8px);
+    background-color: #ff6347; /* Tomate más vibrante */
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.c-nav-item:hover {
+    background-color: #ffd700; /* Amarillo dorado */
+    color: #171717;
+    transform: scale(1.1);
+}
+
+/* Estilos para "Mios" */
+.c-unpoke {
+    background-color: #171717;
+    width: calc(25% - 7.5px);
+    height: 85px;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.c-unpoke img {
+    max-width: 60%; /* Asegura que las imágenes no sean demasiado grandes */
+    margin-top: 5px;
+}
+
+.c-mios-pokemon {
+    background-color: #f0f8ff; /* AliceBlue más suave */
+    color: #171717;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
