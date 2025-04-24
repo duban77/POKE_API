@@ -2,106 +2,110 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Asegura que el ancho y alto de los elementos se calculen correctamente */
 }
 
 /* Estilo general para botones */
 button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+    background-color: transparent; /* Sin fondo por defecto */
+    border: none; /* Sin borde por defecto */
+    cursor: pointer; /* Muestra el puntero de clic cuando el botón es interactuado */
     margin: 0;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /* Transición suave para todos los cambios de estilo */
 }
 
 /* Lista de elementos (p. ej. lista de pokemones) */
 .c-lista {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+    display: flex; /* Usamos flexbox para la disposición de los elementos */
+    gap: 10px; /* Espacio entre los elementos */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten al contenedor si es necesario */
 }
 
 .c-lista-pokemon {
-    background-color: #f0f8ff; /* AliceBlue más suave */
-    width: calc(50% - 5px);
+    background-color: #f0f8ff; /* AliceBlue, un color suave de fondo */
+    width: calc(50% - 5px); /* Dos elementos por fila, ajustando el ancho para el espacio entre ellos */
     padding: 15px;
     text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para dar un efecto elevado */
 }
 
 /* Estilos para la navegación fija en la parte inferior */
 .c-nav {
-    position: fixed;
-    bottom: 0;
+    position: fixed; /* Posiciona la barra de navegación de forma fija */
+    bottom: 0; /* Ubicada en la parte inferior */
     left: 0;
-    background: #c0c0c0; /* Silver más neutro */
-    width: 100%;
+    background: #c0c0c0; /* Silver, color neutro para el fondo */
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten */
+    justify-content: space-around; /* Espacio distribuido entre los botones */
     padding: 15px 20px;
     gap: 15px;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave en la parte superior */
 }
 
 .c-nav-item {
-    width: calc(20% - 8px);
-    background-color: #ff6347; /* Tomate más vibrante */
+    width: calc(20% - 8px); /* Tamaño de cada botón en la barra de navegación */
+    background-color: #ff6347; /* Tomate, color vibrante de fondo */
     padding: 10px;
-    border-radius: 6px;
+    border-radius: 6px; /* Bordes redondeados */
     text-align: center;
-    color: white;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    color: white; /* Texto blanco */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transiciones suaves para el color */
 }
 
 .c-nav-item:hover {
-    background-color: #ffd700; /* Amarillo dorado */
-    color: #171717;
-    transform: scale(1.1);
+    background-color: #ffd700; /* Amarillo dorado al hacer hover */
+    color: #171717; /* Texto oscuro al pasar el ratón */
+    transform: scale(1.1); /* Escala ligeramente el botón al pasar el ratón */
 }
 
 /* Estilos para "Mios" */
 .c-unpoke {
-    background-color: #171717;
-    width: calc(25% - 7.5px);
+    background-color: #171717; /* Fondo oscuro */
+    width: calc(25% - 7.5px); /* Tamaño de cada "mio", 4 por fila */
     height: 85px;
     padding: 10px;
     text-align: center;
     color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Centra el contenido */
+    align-items: center; /* Centra verticalmente */
     flex-direction: column;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
 }
 
 .c-unpoke img {
-    max-width: 60%; /* Asegura que las imágenes no sean demasiado grandes */
+    max-width: 60%; /* Limita el tamaño de la imagen */
     margin-top: 5px;
 }
 
 .c-mios-pokemon {
-    background-color: #f0f8ff; /* AliceBlue más suave */
-    color: #171717;
+    background-color: #f0f8ff; /* AliceBlue suave */
+    color: #171717; /* Texto oscuro */
     padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
     text-align: center;
 }
+
+/* Estilos para los tipos de Pokémon */
 .pokemon-types {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* separa los botones */
+    gap: 10px; /* Separación entre los botones de tipo */
     margin-top: 10px;
 }
 
 .pokemon-types button {
     padding: 5px 10px;
-    background-color: #e0e0e0;
-    border-radius: 5px;
+    background-color: #e0e0e0; /* Fondo gris para los botones */
+    border-radius: 5px; /* Bordes redondeados */
 }
+
+/* Estilo para todos los botones (margen entre botones) */
 button {
-    margin: 5px; /* Esto separa todos los botones */
+    margin: 5px; /* Espacio entre todos los botones */
 }
